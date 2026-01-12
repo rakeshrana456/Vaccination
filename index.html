@@ -1686,7 +1686,9 @@ left: -69px;
     <section class="faq-section">
       <div class="container">
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <div class="faq-container" id="faq-container"></div>
+        <div class="faq-container" id="faq-container">
+           
+        </div>
       </div>
     </section>
     <!-- Final CTA Banner -->
@@ -2162,56 +2164,59 @@ left: -69px;
 
       // Render FAQ
       function renderFAQ() {
-        const container = document.getElementById("faq-container");
-        container.innerHTML = "";
+  const container = document.getElementById("faq-container");
+  container.innerHTML = "";
 
-        FAQS.forEach((faq, index) => {
-          const item = document.createElement("div");
-          item.className = "faq-item";
-          item.innerHTML = `
-                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
-                        <span>${faq.question}</span>
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">${faq.answer}</div>
-                    </div>
-                `;
+  FAQS.forEach((faq) => {
+    const item = document.createElement("div");
+    item.className = "faq-item";
 
-          const question = item.querySelector(".faq-question");
-          const answer = item.querySelector(".faq-answer");
+    item.innerHTML = `
+      <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+        <span>${faq.question}</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">${faq.answer}</div>
+      </div>
+    `;
 
-          function toggleFAQ() {
-            const isActive = item.classList.contains("active");
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
 
-            // Close all FAQs
-            document.querySelectorAll(".faq-item").forEach((faqItem) => {
-              faqItem.classList.remove("active");
-              faqItem.querySelector(".faq-answer").style.maxHeight = null;
-              faqItem
-                .querySelector(".faq-question")
-                .setAttribute("aria-expanded", "false");
-            });
+    function toggleFAQ() {
+      const isActive = item.classList.contains("active");
 
-            // Open clicked FAQ if it wasn't active
-            if (!isActive) {
-              item.classList.add("active");
-              answer.style.maxHeight = answer.scrollHeight + "px";
-              question.setAttribute("aria-expanded", "true");
-            }
-          }
+      document.querySelectorAll(".faq-item").forEach((faqItem) => {
+        faqItem.classList.remove("active");
+        faqItem.querySelector(".faq-answer").style.maxHeight = null;
+        faqItem
+          .querySelector(".faq-question")
+          .setAttribute("aria-expanded", "false");
+      });
 
-          question.addEventListener("click", toggleFAQ);
-          question.addEventListener("keypress", (e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              toggleFAQ();
-            }
-          });
-
-          container.appendChild(item);
-        });
+      if (!isActive) {
+        item.classList.add("active");
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        question.setAttribute("aria-expanded", "true");
       }
+    }
+
+    question.addEventListener("click", toggleFAQ);
+    question.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleFAQ();
+      }
+    });
+
+    container.appendChild(item);
+  });
+}
+
+/* 🔥 IMPORTANT: Call the function AFTER DOM loads */
+document.addEventListener("DOMContentLoaded", renderFAQ);
+</script>
 
       // Smooth scroll for anchor links (works for dynamically rendered links too)
       document.addEventListener("click", function (e) {
