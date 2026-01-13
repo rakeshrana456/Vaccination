@@ -539,7 +539,7 @@
          .hero-image{
           width: 300px;
     position: relative;
-    left: -49%;
+    left: -64%;
 }
       }
 
@@ -550,20 +550,9 @@
          .hero-image{
           width: 300px;
     position: relative;
-    left: -54%;
+    left: -64%;
 }
-
- 
       }
-      @media(max-width:320px)
-{
-  .hero-image{
-          width: 300px;
-    position: relative;
-    left: -61%;
-}
-}
-
       .section-subtitle {
         text-align: center;
         color: var(--text-gray);
@@ -1113,13 +1102,6 @@
           grid-template-columns: 1fr;
         }
       }
-      /* @media(max-width: 375px){
-        .hero-image{
-          position: relative;
-left: -69px;
-
-        }
-      } */
 
       /* ====== UI TUNING (smaller + cleaner) ====== */
       body {
@@ -1267,7 +1249,7 @@ left: -69px;
   display: none !important;
 }
 
- .modal {
+      .modal {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.4); /* optional overlay */
@@ -1279,29 +1261,26 @@ left: -69px;
 .modal-box {
   background: #fff;
   width: 100%;
-  max-width: 900px;
+  max-width: 900px;   /* 🔥 control popup width */
   border-radius: 20px;
   padding: 40px;
   display: flex;
   gap: 40px;
   position: relative;
-
-
 }
-
       /* Close button */
-     .modal-right {
+      .modal-right {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center; /* keep image centered inside */
-  position: relative;
+  justify-content: center;
+  position: relative; 
 }
 
 .close-btn {
   position: absolute;
-  top: 11px;
-  right: 13px;
+  top: -12px;
+  right: -12px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -1321,7 +1300,7 @@ left: -69px;
       .modal-left {
   display: flex;
   flex-direction: column;
-  
+  justify-content: center;
 }
 
       .modal-left h1 {
@@ -1375,11 +1354,9 @@ left: -69px;
         background: #fff;
         height: 44px;
         padding: 0 20px;
-         color: #03349f;
         border-radius: 24px;
         font-size: 14px;
         display: flex;
-        font-weight: 600;
         align-items: center;
         gap: 8px;
         cursor: pointer;
@@ -1404,23 +1381,9 @@ left: -69px;
 
       .doctor-img {
         width: 280px;
-        /* position: relative; */
+        position: relative;
         z-index: 1;
       }
-.success-box {
-  background: #e9f9f0;
-  color: #1b7a4d;
-  padding: 14px 18px;
-  border-radius: 12px;
-  font-size: 15px;
-  /* margin-bottom: 20px; */
-  border: 1px solid #bfe9d5;
-  margin-top: 20px;
-}
-
-.success-box.hidden {
-  display: none;
-}
 
       /* Responsive */
       @media (max-width: 900px) {
@@ -1428,18 +1391,17 @@ left: -69px;
           flex-direction: column;
           padding: 30px 24px;
         }
-        .modal-box {
-    flex-direction: column;   /* STACK */
-    max-width: 420px;
-    padding: 30px 20px;
-  }
-  .modal-right {
-    margin-top: 30px;
-  }
-        .modal-left,
-  .modal-right {
-    width: 100%;
-  }
+        .modal-box 
+        {
+        flex-direction: column;
+        max-width: 420px;
+       padding: 30px 20px;
+         }
+
+        .modal-right {
+          margin-top: 30px;
+        }
+
         .ring {
           width: 200px;
           height: 200px;
@@ -1448,19 +1410,20 @@ left: -69px;
         .doctor-img {
           width: 220px;
         }
-       .actions {
-    flex-direction: column;
-    gap: 12px;
-  }
- .submit-btn{
+        .actions {
+          display: flex;
+          flex-direction: column;
+        }
+        .submit-btn{
           width: 100%;
         }
-       .call-btn {
-    justify-content: center;
-    text-decoration: none;
-    color: #03349f;
-    width: 100%;
-  }
+        .call-btn{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          text-decoration: none;
+          color: #03349f;
+        }
         .call-btn a{
           text-decoration: none;
         }
@@ -1686,9 +1649,7 @@ left: -69px;
     <section class="faq-section">
       <div class="container">
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <div class="faq-container" id="faq-container">
-           
-        </div>
+        <div class="faq-container" id="faq-container"></div>
       </div>
     </section>
     <!-- Final CTA Banner -->
@@ -1705,9 +1666,9 @@ left: -69px;
               >📞 Call +91 95 7000 9000</a
             >
             <a
-              class="btn btn-outline-white book-appointment-btn"
-              href="javascript:void(0)"
-  
+              class="btn btn-outline-white"
+              href="https://www.book.drmorepenhome.com/login"
+              target="_blank"
               >Book Now</a
             >
           </div>
@@ -1794,7 +1755,7 @@ left: -69px;
       <div class="modal hidden" id="appointmentModal">
 
   <div class="modal-box">
-<button class="close-btn" onclick="closeModal()">×</button>
+
     <div class="modal-left">
       <h1>Request a Callback</h1>
       <p>
@@ -1814,38 +1775,33 @@ left: -69px;
   <div class="form-group">
     <select name="services" id="medicineSelect" required>
       <option value="" disabled selected>Select Medicine / Vaccine</option>
-      <option value="influenza">Influenza Vaccine</option>
-      <option value="pneumococcal_vaccine">Pneumococcal Vaccine</option>
-      <option value="hepatitis_a">Hepatitis A</option>
-      <option value="hepatitis_b">Hepatitis B</option>
-      <option value="tdap_booster">Tdap Booster</option>
-      <option value="Typhoid">Typhoid Vaccine</option>
-      <option value="hpv_vaccine">HPV Vaccine</option>
-      <option value="shingles">Shingles Vaccine</option>
-      <option value="Rabies Vaccine">Rabies Vaccine</option>
+      <option>Influenza Vaccine</option>
+      <option>Pneumococcal Vaccine</option>
+      <option>Hepatitis A</option>
+      <option>Hepatitis B</option>
+      <option>Tdap Booster</option>
+      <option>Typhoid Vaccine</option>
+      <option>HPV Vaccine</option>
+      <option>Shingles Vaccine</option>
     </select>
   </div>
 
   <div class="actions">
     <button type="submit" class="submit-btn">Submit</button>
-    <a class="call-btn" href="tel:+919570009000" style="text-decoration: none;">📞 +91 95 7000 9000</a>
+    <a class="call-btn" href="tel:+919570009000">📞 +91 95 7000 9000</a>
   </div>
 </form>
 
 
-<div class="success-box hidden" id="successBox">
-  ✅ Thank you! We will call you shortly.
-</div>
-
-
-  </div>
-   <div class="modal-right">
-      
-      
+    <div class="modal-right">
+      <!-- ✅ CLOSE BUTTON HERE -->
+      <button class="close-btn" onclick="closeModal()">×</button>
 
       <div class="ring"></div>
       <img class="doctor-img" src="assets/Pop-up.png" alt="Doctor" />
     </div>
+
+  </div>
 </div>
 
 
@@ -1902,7 +1858,7 @@ left: -69px;
           useCase: "Seasonal flu protection",
           description:
             "The flu virus changes every year. Getting the updated influenza vaccine helps reduce the risk of severe flu illness and complications.",
-              recommendedFor:
+          recommendedFor:
             "Everyone aged 6 months and above, including adults and children",
         },
         {
@@ -1992,7 +1948,7 @@ left: -69px;
         },
         {
           id: "rabies",
-          name: "Rabies Vaccine",
+          name: "Rabies Vaccine ",
           imageUrl: "assets/Rabies Vaccinations.png",
           icon: "🐕",
           price: 999,
@@ -2164,59 +2120,56 @@ left: -69px;
 
       // Render FAQ
       function renderFAQ() {
-  const container = document.getElementById("faq-container");
-  container.innerHTML = "";
+        const container = document.getElementById("faq-container");
+        container.innerHTML = "";
 
-  FAQS.forEach((faq) => {
-    const item = document.createElement("div");
-    item.className = "faq-item";
+        FAQS.forEach((faq, index) => {
+          const item = document.createElement("div");
+          item.className = "faq-item";
+          item.innerHTML = `
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                        <span>${faq.question}</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">${faq.answer}</div>
+                    </div>
+                `;
 
-    item.innerHTML = `
-      <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
-        <span>${faq.question}</span>
-        <span class="faq-icon">▼</span>
-      </div>
-      <div class="faq-answer">
-        <div class="faq-answer-content">${faq.answer}</div>
-      </div>
-    `;
+          const question = item.querySelector(".faq-question");
+          const answer = item.querySelector(".faq-answer");
 
-    const question = item.querySelector(".faq-question");
-    const answer = item.querySelector(".faq-answer");
+          function toggleFAQ() {
+            const isActive = item.classList.contains("active");
 
-    function toggleFAQ() {
-      const isActive = item.classList.contains("active");
+            // Close all FAQs
+            document.querySelectorAll(".faq-item").forEach((faqItem) => {
+              faqItem.classList.remove("active");
+              faqItem.querySelector(".faq-answer").style.maxHeight = null;
+              faqItem
+                .querySelector(".faq-question")
+                .setAttribute("aria-expanded", "false");
+            });
 
-      document.querySelectorAll(".faq-item").forEach((faqItem) => {
-        faqItem.classList.remove("active");
-        faqItem.querySelector(".faq-answer").style.maxHeight = null;
-        faqItem
-          .querySelector(".faq-question")
-          .setAttribute("aria-expanded", "false");
-      });
+            // Open clicked FAQ if it wasn't active
+            if (!isActive) {
+              item.classList.add("active");
+              answer.style.maxHeight = answer.scrollHeight + "px";
+              question.setAttribute("aria-expanded", "true");
+            }
+          }
 
-      if (!isActive) {
-        item.classList.add("active");
-        answer.style.maxHeight = answer.scrollHeight + "px";
-        question.setAttribute("aria-expanded", "true");
+          question.addEventListener("click", toggleFAQ);
+          question.addEventListener("keypress", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              toggleFAQ();
+            }
+          });
+
+          container.appendChild(item);
+        });
       }
-    }
-
-    question.addEventListener("click", toggleFAQ);
-    question.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        toggleFAQ();
-      }
-    });
-
-    container.appendChild(item);
-  });
-}
-
-/* 🔥 IMPORTANT: Call the function AFTER DOM loads */
-document.addEventListener("DOMContentLoaded", renderFAQ);
-</script>
 
       // Smooth scroll for anchor links (works for dynamically rendered links too)
       document.addEventListener("click", function (e) {
@@ -2349,7 +2302,7 @@ document.addEventListener("DOMContentLoaded", renderFAQ);
 
     if (select && vaccineName) {
       [...select.options].forEach(option => {
-        option.selected = option.text.trim() === vaccineName;
+        option.selected = option.text === vaccineName;
       });
     }
   });
@@ -2375,12 +2328,12 @@ document.addEventListener("DOMContentLoaded", renderFAQ);
 
     if (select) {
       if (vaccineName) {
-      
+        // ✅ AUTO SELECT
         [...select.options].forEach(option => {
           option.selected = option.text === vaccineName;
         });
       } else {
-        
+        // ✅ MANUAL SELECT
         select.selectedIndex = 0;
       }
     }
@@ -2409,14 +2362,15 @@ document.addEventListener("DOMContentLoaded", renderFAQ);
     }
   });
 
-  
+  // fallback service
   if (!request.service) {
-    request.service = "nurse At Home";
+    request.service = "Vaccination At Home";
   }
 
+  // prefix country code
   request.phone_number = `91${request.phone_number}`;
 
-  fetch("https://dmhdevapi.electrovese.in/api/admin/webhooks/create/fromlead", {
+  fetch("https://dmhcrmapi.electrovese.in/api/admin/webhooks/create/fromlead", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -2437,20 +2391,12 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
   const formData = new FormData(e.target);
   const value = Object.fromEntries(formData.entries());
 
-  leadGen(value); 
+  leadGen(value); // 🔥 SEND TO API
 
- 
- const successBox = document.getElementById("successBox");
-  successBox.classList.remove("hidden");
-
- 
+  // optional UX
+  alert("Thank you! We will call you shortly.");
+  closeModal();
   e.target.reset();
-
-  
-  setTimeout(() => {
-    successBox.classList.add("hidden");
-    closeModal();
-  }, 5000);
 });
 </script>
 
